@@ -1,0 +1,52 @@
+\newcommand{\bildklein}[3]{  
+	\begin{figure}[hp]
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{#1}
+	\end{center}
+	\caption[#2]{#3}
+	\end{figure}
+}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+  	
+\newcommand{\bildgross}[3]{  
+	\begin{figure}[hp]
+	\begin{center}
+	\includegraphics[width=0.95\textwidth]{#1}
+	\end{center}
+	\caption[#2]{#3}
+	\end{figure}
+}
+  
+
+\newcommand{\eqn}[3]{
+	\begin{figure}[hp]
+	\begin{equation}#1\end{equation}
+	\caption[#2]{#3}
+	\end{figure}
+}
+
+\newcommand\frontmatter{%
+    \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+ % \@mainmatterfalse
+  }
+   
+\newcommand*{\AnnexPath}{components/Annex}%
+\newcommand*{\IntentdetectionPath}{chapters/5_Intentdetection}%
+\captionsetup[subfigure]{labelfont=bf,textfont=normalfont,singlelinecheck=off,justification=raggedright}
+ 

@@ -1,0 +1,157 @@
+\documentclass[12pt]{report}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+\usepackage[section]{placeins}
+\usepackage{booktabs,array,dcolumn}
+\usepackage{amsmath}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{siunitx}
+
+\bibliographystyle{plainnat}
+
+\usepackage{listings}
+\usepackage{color}
+
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\input{components/settings}
+\input{components/constants}
+\makeindex
+\frenchspacing
+\sloppy
+\hypersetup{final}
+\pagestyle{headings}
+
+\textwidth16cm
+\textheight22cm
+
+\topmargin0cm
+\oddsidemargin0cm
+\evensidemargin0cm
+
+
+\input{components/commands}
+
+\input{figures/tumlogo}
+\makenoidxglossaries
+
+%\makeglossaries
+\input{components/abbr}
+
+
+\begin{document}
+
+	\frontmatter
+
+\input{components/cover}
+% \newpage
+% \thispagestyle{empty}
+% \null
+
+\input{components/infopage}
+\hoffset=0mm
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+% \bibliographystyle{style/wmaainf} % quotation style
+ \bibliographystyle{plain}
+\fboxsep 0mm
+% \newpage
+% \thispagestyle{empty}
+% \null
+\input{components/disclaimer}
+% \newpage
+% \thispagestyle{empty}
+% \null
+\input{components/ack}
+% \newpage
+% \thispagestyle{empty}
+% \null
+\input{components/abstracte}
+% \newpage
+% \thispagestyle{empty}
+% \null
+ %\addbibresource{biblography/library.bib}
+
+% \newpage
+% \setcounter{page}{1}
+
+
+
+
+
+\tableofcontents
+
+
+% \newpage
+% \thispagestyle{empty}
+% \null
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+% \newpage
+% \thispagestyle{empty}
+% \null
+% \input{appendices}
+
+% \newpage
+% \thispagestyle{empty}
+% \null
+	
+%\newpage
+%\addcontentsline{toc}{chapter}{List of Tables}
+%\listoftables
+% \newpage
+% \thispagestyle{empty}
+% \null
+%\newpage
+%\addcontentsline{toc}{chapter}{Listings}
+%\lstlistoflistings
+
+% \newpage
+% \thispagestyle{empty}
+% \null
+\setlength{\baselineskip}{3ex}
+\mainmatter
+\begin{spacing}{1.15}
+	\input{chapters/1_introduction}
+	\input{chapters/2_literature_review.tex}
+	\input{chapters/3_modeling.tex}
+	\input{chapters/4_test_generation.tex}
+	\input{chapters/5_testing_results.tex}
+	\input{chapters/6_conclusion.tex}
+	\input{chapters/7_limitations_and_future_work.tex}
+	
+\end{spacing}
+
+
+\printglossary
+
+\clearpage
+
+\printnoidxglossary[type=\acronymtype]
+%\printglossary[type=\acronymtype]
+
+\input{components/Annex/master_annex}
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\bibliography{biblography/library.bib}
+
+\end{document}

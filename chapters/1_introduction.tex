@@ -1,0 +1,62 @@
+\chapter{INTRODUCTION}
+\label{chapter:introduction}
+
+Software Testing is a broad field which is being already researched for more than 30 years and is applied by vast majority of software companies over the world. According to Pretschner et. al. Nowadays, half of overall development resources and time is spend for quality assurance which gives big motivation to optimize testing process and minimize test design, development and execution time and cost by not harming the quality of the product.
+
+Brainloop also is not an exception in this case. By giving the biggest concentration to security and quality of their products, they don't spare resources for testing. Including the Unit and Integration tests which are created by developers, nearly 50\% of the team resource is spend for testing. Brainloop is always open to the new approaches and trends for optimizing processes and wants to give a try to \acrlong{mbt} approach for one of its product: iOS application called Brainloop Secure Client.
+
+This chapter is divided into five sections. In section 1, we will describe implementation of Agile Scrum in Brainloop. We will discuss the current testing process in company, in section 2. In section 3 we will describe the motivation for this thesis which outlines the improvements which can be done in current testing process. Section 4, will introduce the requirements we need to fulfill by provided implementation for problems mentioned in section 3. In section 5, we will explain concept of \acrlong{mbt} and discuss different approach which can be applied during implementing it as well as shorcomings and adventages of each of them. The last chapter will explain the structure of the thesis.
+
+\section{Agile Scrum in Brainloop}
+
+As a process for software development Brainloop has chosen agile Scrum. Small agile teams consist of product owner, developers, quality engineers and a scrum master. Product Owner is responsible for delivering well thought and fully described requirements in form of User Story. Developers are responsible for full implementation of the user story, including unit and integration tests. Quality Engineers are responsible for documenting test cases according to acceptance criterias of user story, editing any other previously documented test case which needs to be adjusted according to new user story, automating and executing documented test cases and also running exploratory tests against new feature. Scrum Master is responsible for solving any kind of impediments which team members might have during the development or testing, also optimizing the process within the team.
+
+\todo{describe 1 sprint process}
+
+
+
+Along with the manual test execution and exploratory testing, quality engineers need to think of and document test cases from user stories and take care of their maintenance when a new feature is introduced or the old one is altered. 
+
+\section{Current Testing Process in Brainloop}
+
+The approach, which is currently used in company, is bound to the creativity of every quality engineer and doesn’t make sure that all “Good” test cases (one which detects potential failure with good cost-effectiveness) are executed [1]. Last but not least, users have reported that while using model-based testing tools they had cost savings through test automation [2]. Therefore, company is interested to see the results and improvements regarding quality, time and cost that can be achieved with this new approach.
+
+\section{Motivation}
+
+describe shortcomings of current testing process
+
+Goal of this thesis is to give the company (Brainloop) information (report) based on a research and case study, which will indicate how model-based testing will fit to the company’s agile environment, whether the change from existing testing strategy to model-based testing will improve the software quality and will be cost-effective.
+
+\section{Requirements}
+
+describe requirements from perspective of company and BSC.
+
+\section{Model-Based Testing}
+\subsection{Off-line Model-Based Testing}
+\subsubsection{Pros}
+\subsubsection{Cons}
+\subsection{On-line Model-Based Testing}
+\subsubsection{Pros}
+\subsubsection{Cons}
+
+\section{Structure of the Thesis}
+The thesis has been organized in a straightforward and effective manner to ease understanding. The flow of the thesis is described below:
+
+\begin{enumerate}
+
+\item \textit{Literature Review: }
+Purpose of this chapter is to show investigations done for choosing the modeling approach and tool, which will fit most for the Brainloop Secure Client’s behaviour model. We review different modeling paradigms available for \acrlong{mbt} as well as the tools used by different researchers or companies to apply \acrlong{mbt} according to their needs. At the end of the chapter, justification will be provided regarding chosen paradigm and tool and how it fulfills our requirements and needs.
+
+\item \textit{Modeling: } This chapter will provide information regarding our \acrlong{aut}, will describe the purpose of it's use and will give detailed information about modeling the behaviour of each part of the application.
+
+\item \textit{Test Generation: } In this chapter, we will discuss different test generation criterions provided by our chosen tool, also you will find justification why it makes more sense to structure models in layers and also you will find definition of \acrshort{mrp} (\acrlong{mrp}) which was introduced in scope of this thesis.
+
+\item \textit{Test Execution and Results: } This chapter provides information regarding execution effort of generated tests together with numbers of found issues during the test execution. Besides that, you will find comparison of results from current testing process to our results and explanation, why some issues were detected by former testing process and not by latter as well as explanation about opposite statement.
+
+\item \textit{Conclusion:  }In this chapter, we will summarize effort and results of applying \acrlong{mbt} for Brainloop Secure Client. We will describe the vision about how \acrlong{mbt} can be integrated into the current Scrum process in Brainloop so that transition from current testing process to \acrlong{mbt} is smooth and we will describe the lessons learned during the thesis.
+
+\item \textit{Limitations and future work: } In this chapter, we finish this study by addressing few limitations of our testing approach. We also discuss the enhancements and improvisations that can be fulfilled regarding application of \acrlong{mbt} in the future, which regrettably could not be addressed in this thesis.
+
+\item \textit{Meta information: }In the further chapters, we have tabulated all the terminologies used throughout the report in more detail which may not be known to a layman and a few abbreviations that have been used.
+    
+\end{enumerate}

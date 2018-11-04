@@ -1,0 +1,68 @@
+\usepackage[utf8]{inputenc}
+\usepackage{a4}
+\usepackage{titlesec}
+\usepackage[none]{hyphenat} %hyphenation
+\sloppy
+\usepackage{parskip} %no indentation after paragraphs
+% \usepackage{umlaute}
+\usepackage{afterpage} %for using \afterpage{\clearpage} (don't push images to the end of a chapter)
+\usepackage{makeidx}
+\usepackage[numbers]{natbib}
+\usepackage{graphicx}
+\usepackage{style/picins} %provides precise control over the placement of inline graphics
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{dsfont} %math symbols
+\usepackage{tabularx}
+\usepackage{floatflt} %float text around figures and tables
+% Florian Schulze, 06.06.2012
+% v1.0, latest edit: 06.06.2012
+
+\usepackage{enumitem} %resume counting from previous enumerate block
+\usepackage{amsmath,amssymb}
+\usepackage[format=default,font=footnotesize,labelfont=bf]{caption}
+\usepackage{listings} %for listing source code
+\usepackage{color}
+\usepackage{algpseudocode} %for listing pseudocode
+\usepackage{algorithm} %wrap algpseudocode and enrich with label etc.
+\usepackage{float} % for [H] after floats
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[toc,page]{appendix}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{subcaption}
+% \usepackage{dingbat}
+% \usepackage{longtable}
+% \usepackage[acronym]{glossaries}
+% \usepackage[
+% nonumberlist, %do not show page numbers
+% acronym,      %generate acronym listing   -> Not used in this example (see line with %%% )
+% toc,          %show listings as entries in table of contents
+% section]      %use section level for toc entries
+% {glossaries}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=45mm,
+ top=45mm,
+ bottom=45mm,
+ }
+
+\usepackage[acronym, toc]{glossaries}
+
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter.}{20pt}{\huge}
+
+\titleformat{\paragraph}[hang]{\normalfont\bfseries}{\theparagraph}{.5em}{}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    language=Python,
+    breaklines=true,
+    frame=single,
+    breakatwhitespace=false, 
+    % numbers=left,
+    literate=::1
+}
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
