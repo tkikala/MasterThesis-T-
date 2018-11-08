@@ -2,21 +2,22 @@
 \label{chapter:introduction}
 
 \par
-Software Testing is a broad field which is being already researched for more than 30 years and is applied by vast majority of software companies over the world. According to Pretschner et. al. Nowadays, half of overall development resources and time is spend for quality assurance which gives big motivation to optimize testing process and minimize time and cost of test design, development and execution so that quality of the product remains unharmed.
+Software Testing is a broad field which has been researched for more than 30 years and is applied to a vast majority of software companies across the globe. According to Pretschner et. al. Nowadays, half of overall development resources and time is spent over quality assurance which is the biggest motivation to optimize testing process and minimize the time and cost of designing, developing and executing a test in order to retain the quality of the product.
+
 
 \par
-Brainloop also is not an exception in this case. By giving the biggest concentration to security and quality of their products, they don't spare resources for testing. Including the Unit and Integration tests which are created by developers, nearly 50\% of the team resource is spend for testing. Brainloop is always open to the new approaches and trends for optimizing processes and wants to give a try to \acrlong{mbt} approach for one of its product: iOS application called Brainloop Secure Client.
+Brainloop, just like the other companies in the field has no particular exceptions. As an organization they are mostly concentrated towards the security and quality of their products, and spare fewer resources for testing. Including the Unit and Integration tests that are created by developers, nearly 50\% of the team resource is utilized in testing. Brainloop has always been open to new approaches and trends for optimizing processes and is particularly interested towards applying the \acrlong{mbt} approach for one of its product: iOS application called Brainloop Secure Client.
 
 \par
-This chapter is divided into five sections. In section 1, we will describe implementation of Agile Scrum in Brainloop. We will discuss the current testing process in company, in section 2. In section 3 we will describe the motivation for this thesis which outlines the improvements which can be done in current testing process. Section 4, will introduce the requirements we need to fulfill by provided implementation for problems mentioned in section 3. In section 5, we will explain concept of \acrlong{mbt} and discuss different approach which can be applied during implementing it as well as shorcomings and adventages of each of them. The last chapter will explain the structure of the thesis.
+This chapter is divided into five sections. In section 1, we will describe the implementation of Agile Scrum process in Brainloop. We will discuss the currently existing testing process in the company, in section 2. In section 3 we will describe the motivation for this thesis which outlines the improvements that can be carried out on the existing implementation of the testing process. Section 4, will introduce the requirements we need to fulfill by providing an implementation to overcome the problems mentioned in section 3. In section 5, we will explain the concept of \acrlong{mbt} and discuss different approaches that can be applied during implementing it and will also try to shed some light over the shortcomings and advantages of each of them. The last chapter will explain the structure of the thesis.
 
 \section{Agile Scrum in Brainloop}
 
 \par
-As a process for software development Brainloop has chosen agile Scrum. Small agile teams consist of product owner, developers, quality engineers and a scrum master. Product Owner is responsible for delivering well thought and fully described requirements in form of User Story. Developers are responsible for full implementation of the user story, including unit and integration tests. Quality Engineers are responsible for documenting test cases for verifying feature functionality and GUI correctness according to acceptance criteria of user story, editing any other previously documented test case which needs to be adjusted according to new user story, automating and executing manually documented test cases and also running exploratory tests against new feature. Scrum Master is responsible for solving any kind of impediments which team members might have during the development or testing, also optimizing the process within the team.
+As a process for software development Brainloop makes use of agile scrum model. This includes smaller agile teams that consist of product owner, developers, quality engineers and a scrum master. The product owner is responsible for delivering a well thought and fully described requirements in the form of a User Story. The role of the developers is to completely implement the user stories comprising of the functional program code which also includes the unit and integration test codes/scripts. The quality engineers are the ones responsible for documenting the test cases in order to verify the correct implementation of the feature functionality and \acrlong{gui} according to acceptance criteria described in the user story. They also modify/update any other previously documented test case that needs adjustments based on new user stories. Quality engineers play an important role in the automation and execution of the manually documented test cases while also performing exploratory tests against new features. The Scrum Master's responsibility is to find solutions to all kinds of impediments faced by the team members during the development and testing phases and also optimizing the overall agile process within the team.
 
 \par
-Whole team together is obliged to deliver software increment in one sprint which in Brainloop is 2 weeks. During the sprint, couple of team meetings take place which are of vital importance for scrum process in Brainloop. These meetings are refinement, planning, retrospective and iteration review. During the refinement meeting, product owner introduces new user stories to the team, where team members discuss points around user story, raise questions regarding it and after raising points if the team is satisfied with the provided solutions and there are no impediments regarding this specific user story, it is refined and team accepts it. Next meeting is planning, where refined user stories get estimated and based on team capacity they are included into the next sprint. During retrospective team members are discussing what was beneficial and harmful during the sprint and providing this information to scrum master, who is responsible for resolving harmful issues. Iteration review takes place at the end of every sprint, where all teams shown their delivered increment to other teams and management.
+Each individual in the team combined together in entirety is responsible for the delivery of the software increment every sprint, which in case of Brainloop is 2 weeks. During the sprint, a couple of team meetings ar held, which are vital for scrum process at Brainloop. These meetings are refinement, planning, retrospective and iteration review. During the refinement meeting, product owner introduces new user stories to the team, where team members discuss points around user story, raise questions regarding it and after raising points if the team is satisfied with the provided solutions and there are no impediments regarding this specific user story, it is refined and team accepts it. Next meeting is planning, where refined user stories get estimated and based on team capacity they are included into the next sprint. During retrospective team members are discussing what was beneficial and harmful during the sprint and providing this information to scrum master, who is responsible for resolving harmful issues. Iteration review takes place at the end of every sprint, where all teams shown their delivered increment to other teams and management.
 
 \section{Current Testing Process in Brainloop}
 
@@ -36,7 +37,7 @@ To illustrate description above, current testing process looks like figure below
 \begin{figure} [htbp!]
 	\centering
 					\includegraphics[width=1.1\textwidth]{figures/current_testing_process_flow.JPG}
-					\caption{\label{Fig:current_testing_process_flow} Current Testing Process Flow}
+					\caption{\label{Fig:current_testing_process_flow} Current Testing Process}
 \end{figure}
 
 \section{Motivation}
@@ -69,23 +70,33 @@ The main requirement from Brainloop is that new approach should be usable by all
 
 \section{Model-Based Testing}
 
+\par
+Models have been applied in Software Development for already many years with different use-cases, such as describing specification, code generation etc. In our case, we apply models for describing application behaviour. Modeling is very economical way for capturing knowledge about \acrlong{aut}. This knowledge was put on the same level as gold by Apfenbaum et. al. Unlike the traditional testing process, where quality engineer needs to maintain all static test cases documented in issue tracker software, model is the only artifact which needs to be maintained for describing actions and expected results. It takes significantly less time to update model when change occurs in \acrlong{aut} compared to updating statically documented test cases. Many researchers including Pretschner and Apfenbaum claim that models are created anyways with different representations during traditional testing process. They are either mental models, or sketched on paper or etc. Difference is that these models are not documented explicitly. They die soon and lots of potential good test cases die with them.
 
 \par
-description of MBT
+Another advantage which \acrlong{mbt} has over traditional testing is that it is free of ambiguous text descriptions, such as "Verify that action is handled appropriately". It is fact that different people write different test cases and information encapsulated in test case can be interpreted in many ways.
+
+\par
+Models can be created with many different paradigms, such as \acrlong{esg}, \acrlong{fsm} etc. which will be explored in next chapter, but the general flow of \acrlong{mbt} process is as described in the figure below. 
 
 
 \begin{figure} [htbp!]
 	\centering
 					\includegraphics[width=1.1\textwidth]{figures/MBT_Flow.JPG}
-					\caption{\label{Fig:MBT_Flow} Model-Based Testing Flow}
+					\caption{\label{Fig:MBT_Flow} Model-Based Testing Process}
 \end{figure}
 
+We create model, then we apply different algorithms with different coverage criteria against this model and generate abstract test cases and we execute generated test cases against \acrlong{aut}. Technically we can create one model for describing whole behaviour of application, but for complex applications, such as Brainloop Secure Client, it would become huge and unreadable. For this reason we need to apply some techniques for splitting these models, such as hierarchical modeling, or splitting models with shared steps among other small models and use some techniques such as flattening or etc. for assembling all created models before we try to apply coverage algorithms.
+
+\par
+\acrlong{mbt} splits into two mainstreams, Off-line and On-line. Both of them have their advantages and disadvantages which will be discussed in next subsections.
+
 \subsection{Off-line Model-Based Testing}
-\subsubsection{Pros}
-\subsubsection{Cons}
+Off-line \acrlong{mbt} means that test generation and execution are completely decoupled. One can generate test cases from model and then execute them against \acrlong{aut} with any means and in any supported environment. There are couple of advantages which Off-line \acrlong{mbt} has over On-line, such as it is easier to integrate into the current testing process as it requries less changes. Generated tests can also be split and executed in parallel to save time during test execution. The most significant advantage what Off-line \acrlong{mbt} has over On-line, is that it does not require automation of test execution. As automation of test execution is very extensive and time consuming implementation task, it can not be part of this thesis, so this is the main reason why we decided to proceed with Off-line \acrlong{mbt} instead of On-line.
+
 \subsection{On-line Model-Based Testing}
-\subsubsection{Pros}
-\subsubsection{Cons}
+During On-line \acrlong{mbt} test generation and execution are coupled and happen at the same time. Unlike Off-line \acrlong{mbt} it tolerates non-functional requirements. This would give the opportunity to run tests on test machines for couple of months which would ensure application exploration into millions of different ways. The generation process strongly depends on execution process which is main advantage of On-line \acrlong{mbt} over Off-line. Based on the results from execution, generation algorithms can choose different possible paths in the model. As it requires complete execution automation, it is very painful and time consuming to integrate into the current testing process, but when there is already complete test automation suite for \acrlong{aut}, On-line \acrlong{mbt} is the preferred way to go in most cases.
+
 
 \section{Structure of the Thesis}
 The thesis has been organized in a straightforward and effective manner to ease understanding. The flow of the thesis is described below:
