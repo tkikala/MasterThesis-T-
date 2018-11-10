@@ -180,25 +180,25 @@ To sum up, Agile Requirement Designer gives opportunity to integrate \acrshort{m
 \section{Justification of Decision}
 
 \par
-Basically, all tools reviewed in previous section were suitable for applying off-line \acrshort{mbt} for Brainloop Secure Client except MobiGUITAR which supports only android platform. USE required adoption of \acrshort{uml} as well as language for writing generation criteria in .assl file, because of this it got the lowest priority. NModel and Spec Explorer required knowledge of programming languages and programming concepts which reduced their priority in our list as well. Among remaining two tools, CA Agile Requirement Designer had higher priority due to its connection interfaces to many other already used technologies in Brainloop, which was making it easier to integrate \acrshort{mbt} into the current testing process, but unfortunately we were not responded for the request of using it during our thesis. As a result, choice was made in advantage of Graphwalker. Table \ref{tab:Prioritized_Tools} summarizes the prioritization of underlying tools.
+Basically, all tools reviewed in previous section were suitable for applying off-line \acrshort{mbt} for Brainloop Secure Client except MobiGUITAR which supports only android platform. So, Prioritization of the rest of the tools were based on the requirements given from company that the chosen tool should be usable among all quality engineers in company. USE required adoption of \acrshort{uml} as well as language for writing generation criteria in .assl file, because of this it got the lowest priority. NModel and Spec Explorer required knowledge of programming languages and programming concepts which reduced their priority in our list as well. Among remaining two tools, CA Agile Requirement Designer had higher priority due to its connection interfaces to many other already used technologies in Brainloop, which was making it easier to integrate \acrshort{mbt} into the current testing process, but unfortunately we were not responded for the request of using it during our thesis. As a result, choice was made in advantage of Graphwalker. Table \ref{tab:Prioritized_Tools} summarizes the prioritization of underlying tools.
 
 \begin{table}[]
     \centering
-    \begin{tabular}{|l|p{10cm}|}
+    \begin{tabular}{|l|l|p{8cm}|}
         \hline
-        Tool & Reasons \\
+        Priority & Tool & Reasons \\
         \hline
-        Graphwalker & Requires no programming knowledge for applying off-line \acrshort{mbt} \\
+        1 & Graphwalker & Requires no programming knowledge for applying off-line \acrshort{mbt} \\
         \hline
-        CA Agile Requirement Designer & Easily integratable into Brainloops current testing process. Request for usage was not responded \\
+        2 & CA Agile Requirement Designer & Easily integratable into Brainloops current testing process. Request for usage was not responded \\
         \hline
-        NModel & Requires programming knowledge \\
+        3 & NModel & Requires programming knowledge \\
         \hline
-        Spec Explorer & Requires programming knowledge, Product is not maintained any more \\
+        4 & Spec Explorer & Requires programming knowledge, Product is not maintained any more \\
         \hline
-        USE & Requires adoption of new languages \\
+        5 & USE & Requires adoption of new languages for modeling and test generation\\
         \hline
-        MobiGUITAR & Supports only android platform \\
+        6 & MobiGUITAR & Supports only android platform \\
         \hline
     \end{tabular}
     \caption{Prioritized Tools}
