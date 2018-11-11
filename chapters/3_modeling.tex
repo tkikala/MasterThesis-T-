@@ -3,11 +3,36 @@
 
 
 \section{Brainloop Secure Client app for iOS platform} 
+
+\par
+It will be impossible to explain concept behind \acrshort{bsc} without mentioning Brainloop Secure Dataroom Service (\acrshort{bdrs}). 
+
+\par
+\acrshort{bdrs} \cite{BDRS_Description} is a secure service for data governance, allowing customer businesses reliable and extremely secure data and communication management within the company as well as with outside parties such as partners, consultants, government agencies and clients. Highest level of security is achieved with double authentication with time-limited PINs, 256-bit encryption of storage as well as data transfer, consistent separation of application and system administration and other state-of-the-art security features available. Document management is supported with multiple features such as structured filing, editing and distribution of documents, document collections that combine, sort and structure several documents with separate version management and different access rights, automatic generation of protected PDF files from PDF, Office documents and picture files for write-protected access with layout checks, where required with additional security options, such as print prevention or content exports, version management and others.
+
+\par
+\acrshort{bsc}'s \cite{BSC_UserGuide} purpose of use is conveniently accessing secure datarooms in \acrshort{bdrs} from iOS devices such as iPhone and iPad. The key features available to users are accessing documents, boardbooks, votes and events, downloading documents locally, annotating of protected PDF documents and sharing its reviews with other members of dataroom and sending documents to internal as well as external email addresses according to dataroom security policy.
+
+\par
+The typical usage of \acrshort{bsc} would be following. User defines simple access code with digits or complex access code with alphanumeric characters and symbols. After successful definition of access code, He/She gets logged in with correct credentials to \acrshort{bdrs}, chooses which datarooms should be syncronized locally from the list of datarooms to which he/she is invited. After these steps user is eligible to use all the functionality described in the previous paragraph.
+
+
 \section{Model description for Graphwalker}
 \par
-Like all \acrshort{fsm}s which are applied for \acrshort{mbt}, here also \acrshort{fsm} and \acrshort{efsm} are represented in form of directed graph where vertexes represent possible state of \acrshort{aut} and edges represent actions. Graphwalker requires following naming convention for edges and vertexes. Name of each edge should start with e\_ and name of each vertex except Start should start with v\_.
+Like other \acrshort{fsm}s which are applied for \acrshort{mbt}, here also \acrshort{fsm} and \acrshort{efsm} are represented in form of directed graph where vertexes represent states of \acrshort{aut} and edges represent transitions. \acrshort{fsm}s can be created in .graphml format with yEd Graph Editor free software.
+
+\par
+Graphwalker does not care about styles and colors of vertexes and edges. To differentiate between edges and vertexes in the provided report, often e\_ and v\_ prefixes are used respectively, but that is not mandatory as well.
+
+\par
+Graphwalker provides opportunity to initialize variables within the vertex labels with INIT keyword, e.g. INIT:condition = true;. Variable can be either local or global, which respectively means that it can be either used only in the model where it is initialized, or it can be used in other models as well. These variables can be then used in guards and actions. Guard defines the condition for Graphwalker about eligibility of walking through an edge. e.g. [condition == true] guard would mean to Graphwalker that this edge can be taken while traversal only in case if condition is true. Only edges can be annotated with guards. Similarly, actions can be applied only to an edges. Action, on the other hand, is used for setting the value of variables in model. /condition = false; action would tell Graphwalker to set the variable condition to false when the edge annotated with this action is taken. If variable condition is used first time action will serve for its initialization as well. 
+
+\par
+There are multiple keywords supported by Graphwalker such as, Start, SHARED, BLOCKED, INIT, REQTAG and weight. Start keyword stands for starting vertex. It is not mandatory to have it in model, but in that case it needs to be specified to Graphwalker, with parameter given during the runtime, from which state it should start traversal. When multiple models are traversed together, SHARED keyword would mean to Graphwalker that the encountered vertex in this model can be found in other models as well and for next step Graphwalker considers all the edges coming out from current state in all the models. REQTAG keyword can only be used for vertexes and usually gives information about external requirements. User can give specific weights to the edges in model with weight keyword. Weight should be between 0.0 and 1.0. During random exploration of model value of weight would mean to Graphwalker with what probability should annotated edge be chosen.
 
 \section{Modeling of Brainloop Secure Client}
+
+
 \subsection{Modeling of Authentication}
 \subsection{Modeling of Navigation between tabs}
 \subsection{Modeling of Documents Tab}
