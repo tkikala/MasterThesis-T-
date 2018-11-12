@@ -2,10 +2,21 @@
 \label{chapter:conclusion}
 
 \par
+This thesis aimed at applying \acrshort{mbt} to the iOS application \acrshort{bsc} created and maintained in Brainloop and providing testing results as well as vision of how \acrshort{mbt} can be integrated into the scrum process in Brainloop.
 
+\par
+For researching currently available \acrshort{mbt} approaches and tools, we conducted literature review, during which multiple papers, case-studies and master thesis were analyzed. This resulted into 3 possible paradigms for modeling and 6 possible tools applying these paradigms. Based on the requirements provided by Brainloop, that all quality assurance staff needs to be able to easily apply established approach, we chose tool called Graphwalker to proceed with creation of behavioral models of \acrshort{bsc} and generation of tests.
 
-\section{Lessons Learned}
+\par
+We modeled significant part of the \acrshort{bsc} with the predefined level of abstraction using yEd Graph Editor, which is supported free tool for modeling by Graphwalker. This resulted in 33 different models with overall 312 states and 566 transitions. We structured these models in layers, where top layer contains models for authentication, next layer contains models for navigation through different tabs and last layer contains all other operational models structured under each tab.
 
+\par
+The next step was generation of tests from designed models. This feature is supported by Graphwalker via command line parameter. To ease this process, we created small \acrshort{gui} using Windows Forms to choose folder where models reside together with Graphwalker .jar file and with provided test generation criteria display parsed user friendly response through \acrshort{gui}. As the complete coverage of all models together was not feasible due to the enormously long generated test sequence, we came up with notion of \acrshort{mrp} and generated tests using it for every model in 3rd layer of our layered model structure.
+
+\par
+We executed generated test sequences using \acrshort{mrp} and tests generated for complete base layer coverage on one device, which was iPhone 6s. Test execution took approximately 39 hours, during which 4196 states and transitions were respectively verified and conducted and 38 issues were detected. After comparing found issues to the issues already residing in issue tracker system, we found 8 matching issues, which means that 30 new issues were found.  
+\par
+As a last point, vision was provided to Brainloop, how \acrshort{mbt} can be integrated into the current scrum process gradually without requiring quick changes into the current testing process.
  
 
 
