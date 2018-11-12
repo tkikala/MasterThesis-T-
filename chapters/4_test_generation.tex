@@ -1,9 +1,40 @@
 \chapter{TEST GENERATION}
 \label{chapter:test_generation}
 
-\section{Test Generation with Graphwalker}
+\section{Off-line Test Generation with Graphwalker}
 \par
-Graphwalkers provides multiple ways for test generation from models. The general pattern for test selection criterion can be observed in figure \ref{Fig:raphwalker_testselection_example}.
+User needs to have Java version 7 or 8 installed on the machine for test generation with Graphwalker. The off-line generation is supported via command line interface, where user needs to pass models and generation criteria as parameters to Graphwalker .jar file. User can generate tests from single as well as from multiple models simultaneously. The example usage is listed below.
+
+\begin{lstlisting}
+For single model:
+java -jar graphwalker.jar offline -m Login.graphml random(edge_coverage(100))
+\end{lstlisting}
+\begin{lstlisting}
+For multiple models:
+java -jar graphwalker.jar offline 
+-m src/test/resources/graphml/shared_state/Model_A.graphml random(edge_coverage(100)) 
+-m src/test/resources/graphml/shared_state/Model_B.graphml random(edge_coverage(100))
+-m src/test/resources/graphml/shared_state/Model_C.graphml random(edge_coverage(100))
+-m src/test/resources/graphml/shared_state/Model_D.graphml random(edge_coverage(100))
+\end{lstlisting}
+
+\par
+Generated tests are given in form of sequence of edges and vertexes and can be observed in the listing below.
+
+\begin{lstlisting}
+e_Init
+v_ClientNotRunning
+e_StartClient
+v_LoginPrompted
+e_InvalidCredentials
+v_LoginPrompted
+e_ValidPremiumCredentials
+v_Browse
+e_Logout
+\end{lstlisting}
+
+\par
+Graphwalkers allows off-line test generation for from models with multiple selection criteria.  The general pattern for test selection criteria can be observed in figure \ref{Fig:raphwalker_testselection_example}.
 
 \begin{figure} [htbp!]
 	\centering
@@ -41,19 +72,35 @@ a_star(reached_vertex(v_SomeVertex))
 
 \subsection{Stop Conditions}
 \par
-Edge and vertex coverage are the most used stop conditions for any type of random algorithm. They take as a parameter integer which stands for percentage. So, random(edge\_coverage(95)) would mean that Graphwalker can stop only after it covers 95\% of the edges.
+Edge and vertex coverage are the most used stop conditions for any type of random algorithm in Graphwalker. They take as a parameter integer which stands for percentage. So, random(edge\_coverage(95)) would mean that Graphwalker can stop only after it covers 95\% of the edges.
 
 \par
-Reached vertex stop condition
+Reached vertex or edge stop condition tells Graphwalker to stop generation when specific edge or vertex which was passed to it as an argument is reached while traversal. For example, a\_star(reached\_vertex(v\_SomeVertex)) would mean that traversal should stop when vertex with name v\_SomeVertex is reached.
 
-\section{Layers}
+\par
+Other stop conditions are also provided, such as never stopping the traversal, length of generated sequence, time duration for how long traversal should continue, dependency and requirement coverage, but none of them will be used in scope of this thesis.
+
+\section{Graphwalker GUI}
+
+\todo{need to go to work, make screenshots and write briefly about this}
+
 \section{Minimal Required Path}
-\subsection{Graphwalker GUI} 
+\par
+After generating tests with 100\% of random edge coverage of all 33 behavioral models together and parsing the results, it resulted in sequence of 380127 states and transitions. The rough estimation of the time required to execute test suite against \acrshort{aut} was 3533 hours. This is not feasible for company at all, as one testrun requires 10 complete sprints and that also in case if the automated tests will be executed on \acrshort{aut} for 24 hours a day. This required changing the way of test generation and compromising some test scenarios to reduce the test sequence. For this reason we came up with the notion of \acrlong{mrp} (\acrshort{mrp}).
 
+\par
+Model's \acrshort{mrp} stands for the shortest path needed for reaching it from the base layer. It has form of Graphwalker test generation criterion composed with multiple models and a\_star algorithm. Each model's description in second layer contains the \acrshort{mrp} and one example for Security Settings model's \acrshort{mrp} can be observed below.
 
 \begin{lstlisting}
-http://localhost:4200/camera
-http://localhost:4200/camera/<id>
-http://localhost:4200/instruction
-http://localhost:4200/instruction/<id>
+MRP: -m DefineSimpleAccessCode.graphml 
+a_star(reached_vertex(v_InitialAccountConfiguration))
+-m EnterAccessCode.graphml a_star(reached_vertex(v_DocumentsView))
+-m Settings.graphml a_star(reached_vertex(v_SecuritySettings))
+-m InitialAccountConfiguration.graphml 
+a_star(reached_vertex(v_InitialDataroomSelectionView))
+-m InitialDataroomSelectionView.graphml a_star(reached_vertex(v_DocumentsView)) 
+-m NavigationThroughTabs.graphml a_star(reached_vertex(v_SettingsView))
 \end{lstlisting}
+
+After \acrshort{mrp} is given to Graphwalker as a parameter, user can add current model with any coverage criterion. We decided to test \acrshort{bsc}'s base and navigation layers together with 100\% coverage of all models in it and each model from operations layer with 100\% coverage together with their \acrshort{mrp}. Test results will be described in next chapter.
+

@@ -2,12 +2,12 @@
 \label{chapter:modeling}
 
 \par
-Modeling phase included getting familiar with concepts of \acrshort{bsc} and creating behavioral models for most of its functional parts and verifying its correctness. Overall, 2.5 months were spent for modeling and it included defining the layered structure which is explained in more details in following chapter.
+The modeling phase included getting familiar with concepts of \acrshort{bsc}, creating the behavioral models for most of its functional parts, verifying its correctness and  defining the layered structure or models.
 
 \section{Brainloop Secure Client app for iOS platform} 
 
 \par
-It will be impossible to explain concept behind \acrshort{bsc} without mentioning Brainloop Secure Dataroom Service (\acrshort{bdrs}). 
+In order to deeply understand the concept behind \acrshort{bsc} we need to first have a good understanding of the Brainloop Secure Dataroom Service (\acrshort{bdrs}). 
 
 \par
 \acrshort{bdrs} \cite{BDRS_Description} is a secure service for data governance, allowing customer businesses reliable and extremely secure data and communication management within the company as well as with outside parties such as partners, consultants, government agencies and clients. Highest level of security is achieved with double authentication with time-limited PINs, 256-bit encryption of storage as well as data transfer, consistent separation of application and system administration and other state-of-the-art security features available. Document management is supported with multiple features such as structured filing, editing and distribution of documents, document collections that combine, sort and structure several documents with separate version management and different access rights, automatic generation of protected PDF files from PDF, Office documents and picture files for write-protected access with layout checks, where required with additional security options, such as print prevention or content exports, version management and others.
@@ -21,25 +21,25 @@ The typical usage of \acrshort{bsc} would be following. User defines access code
 
 \section{Model description for Graphwalker}
 \par
-Like other \acrshort{fsm}s which are applied for \acrshort{mbt}, here also \acrshort{fsm} and \acrshort{efsm} are represented in form of directed graph where vertexes represent states of \acrshort{aut} and edges represent transitions. \acrshort{fsm}s can be created in .graphml format with yEd Graph Editor free software.
+Like other \acrshort{fsm}s that are applied to \acrshort{mbt}, in the Graphwalker as well the \acrshort{fsm} and \acrshort{efsm} are represented in the form of a directed graph where the vertexes represent states of \acrshort{aut} and the edges represent the transitions between the states. \acrshort{fsm}s can be created in a .graphml format with a yEd Graph Editor.
 
 \par
-Graphwalker does not care about styles and colors of vertexes and edges. To differentiate between edges and vertexes in the provided report, often e\_ and v\_ prefixes are used respectively, but that is not mandatory as well.
+The Graphwalker doesn't consider the styles and colors of vertexes and edges, as in order to differentiate between the edges and the vertexes in the provided report often e\_ and v\_ prefixes are used respectively. However using the prefixes is not at all mandatory.
 
 \par
-Graphwalker provides opportunity to initialize variables within the vertex labels with INIT keyword, e.g. INIT:condition = true;. Variable can be either local or global, which respectively means that it can be either used only in the model where it is initialized, or it can be used in other models as well. These variables can be then used in guards and actions. Guard defines the condition for Graphwalker about eligibility of walking through an edge. e.g. [condition == true] guard would mean to Graphwalker that this edge can be taken while traversal only in case if condition is true. Only edges can be annotated with guards. Similarly, actions can be applied only to an edges. Action, on the other hand, is used for setting the value of variables in model. /condition = false; action would tell Graphwalker to set the variable condition to false when the edge annotated with this action is taken. If variable condition is used first time action will serve for its initialization as well. 
+Graphwalker provides a way to initialize the variables within the vertex labels with INIT keyword, e.g. INIT:condition = true;. it can be either a local or a global variable, which means that it can be either used only in the model (local) where it is initialized, or it can be used in all the other models (global). These variables are then used in guards and actions. A guard defines the condition for Graphwalker about the eligibility of walking through an edge. e.g. [condition == true] guard would mean that this edge can be taken by the Graphwalker while traversing only if the condition is true. Only the edges can be annotated with guards. Similarly, the actions can be applied only to the edges. The actions are used to set the value of the variables in model. /condition = false; action would tell the Graphwalker to set the variable condition to false whenever the edge annotated with this action is taken in to traversal. If variable condition is used first time action will serve for its initialization as well. 
 
 \par
-There are multiple keywords supported by Graphwalker such as, Start, SHARED, BLOCKED, INIT, REQTAG and weight. Start keyword stands for starting vertex. It is not mandatory to have it in model, but in that case it needs to be specified to Graphwalker, with parameter given during the runtime, from which state it should start traversal. When multiple models are traversed together, SHARED keyword would mean to Graphwalker that the encountered vertex in this model can be found in other models as well and for next step Graphwalker considers all the edges coming out from current state in all the models. REQTAG keyword can only be used for vertexes and usually gives information about external requirements. User can give specific weights to the edges in model with weight keyword. Weight should be between 0.0 and 1.0. During random exploration of model value of weight would mean to Graphwalker with what probability should annotated edge be chosen.
+There are multiple keywords supported by the Graphwalker such as, Start, SHARED, BLOCKED, INIT, REQTAG and weight. The Start keyword stands for the starting vertex. It is not mandatory to have it in the model, however it needs to be specified to the Graphwalker, as a parameter given during the runtime to define the state it should start the traversal from. When multiple models are traversed together, the SHARED keyword would mean that the Graphwalker encountering a vertex in this model can be found in other models as well and for the next step the Graphwalker will consider all the edges coming out from current state in all the models. The REQTAG keyword can only be used for vertexes and usually gives information about the external requirements. User can give specific weights to the edges in a model with the weight keyword. Ideally the weight should be between 0.0 and 1.0. During a random exploration of the model the value of weight would provide the Graphwalker the probability that should be chosen to annotate the edge.
 
 \section{Modeling of Brainloop Secure Client}
 
 \par
-Modeling \acrshort{bsc} behaviour included  most of its functionality created as separate models interconnected with shared steps. Some of functional parts such as remote synchronization, boardbooks, locking of application, locking of device and other environmental constraints were omitted during modeling, due to timing and complexity constraints. Some of the key models are described in the following subsections.
+Modeling of the \acrshort{bsc} behaviour included  most of its functionality created as separate models interconnected with shared steps. Some of the functional parts such as remote synchronization, boardbooks, offline usage, locking of the application, locking of the device and other environmental constraints were omitted during the modeling process, due to the time and complexity constraints. Some of the key models are described in the following subsections.
 
 \subsection{Modeling of Authentication}
 \par
-Authentication functionality of \acrshort{bsc} consists of 2 steps. Defining access code for accessing the application and authentication against \acrshort{bdrs}. Two types of access codes can be defined, simple and complex. Difference is that simple one can only contain numeric characters while complex access code can consist of alphanumeric characters and symbols. Entering defined access code for confirming the identity is required every time application is started and also after the automatic lock of application, which happens due to staying idle for defined in settings time.
+The authentication functionality of the \acrshort{bsc} consists of 2 steps. Defining the access code for accessing the application and the authentication against \acrshort{bdrs}. The access codes can be defined either as simple or as complex. The difference between the two is that simple one can only contain numeric characters while the complex access code can consist of alphanumeric characters and symbols. The defined access code is required to be entered for confirming the identity every time the application is run and also to unlock from the automatic lock feature of the application, which occurs due the application idle time defined in the settings.
 
 \par
 4 different models were created for authentication functionality of \acrshort{bsc}. Define simple access code with 7 states and 10 transitions, define complex access code with 5 states and 7 transitions, enter access code with 8 states and 11 transitions and initial authentication against \acrshort{bdrs} with 6 states and 9 transitions. One of them can be observed in figure \ref{Fig:Authentication_Model_Screenshot}.
@@ -156,9 +156,19 @@ Settings functionality is split up into 11 models. One main model is responsible
 					\caption{\label{Fig:Settings_model_screenshot} Model for Settings Tab}
 \end{figure}
 
+\section{Layers}
+\par
+Created models are structured in layered manner. Accessing the specific functionality requires passing through all the layers between Base layer and the layer where functionality is described. The best practice would be if none of models depend on any model below the layer where it resides. But, unfortunately, in some cases that can not be achieved. For example, application view settings decide on which tab will user land after entering the access code and landing on specific tab is decided in enter access code model which resides in base layer. There are very few exceptions like this in models, but they were worth mentioning. Figure \ref{Fig:Layers} describes detailed structure of layers of our models.
+
+\begin{figure} [htbp!]
+	\centering
+					\includegraphics[width=0.8\textwidth]{figures/Layers}
+					\caption{\label{Fig:Layers} Layered Structure of Models}
+\end{figure}
+
 \section{Sum Up}
 \par
-Overall, 33 models were created, with total 307 states and 560 transitions describing behavior of \acrshort{bsc}. More detailed representation of states and transitions can be observed in table \ref{tab:Behavioral_models}.
+Overall, 33 models were created, with total 312 states and 566 transitions describing behavior of \acrshort{bsc}. More detailed representation of states and transitions can be observed in table \ref{tab:Behavioral_models}.
 
 
 \begin{table}[]
@@ -221,6 +231,8 @@ Overall, 33 models were created, with total 307 states and 560 transitions descr
         \hline
         Security Settings & 10 & 18 \\
         \hline
+        Change Account Password & 5 & 6 \\
+        \hline
         Servers and Datarooms Settings & 14 & 22 \\
         \hline
         Add Dataroom Server & 5 & 6 \\
@@ -231,7 +243,7 @@ Overall, 33 models were created, with total 307 states and 560 transitions descr
         \hline
         Votes & 15 & 30 \\
         \hline
-        \textbf{Total} & \textbf{307} & \textbf{560} \\
+        \textbf{Total} & \textbf{312} & \textbf{566} \\
         \hline
     \end{tabular}
     \caption{Behavioral Models of \acrshort{bsc}}

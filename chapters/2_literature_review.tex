@@ -2,18 +2,18 @@
 \label{chapter:literature_review}
 
 \par
-The initial phase of the thesis was getting familiar with concept of \acrshort{mbt}, analyzing previously done or currently ongoing researches and case studies related to \acrshort{mbt} and choosing the right tool which conformed with our requirements through literature review. Within this phase 16 research papers, 1 master's thesis and 1 patent description were read completely, analyzed and documented, not to mention tool descriptions as well as other papers which were discarded after reading the abstract. It also included time during which multiple \acrshort{mbt} tools were configured and tried out for choosing one for applying it for \acrshort{bsc}. Overall, 2 complete months were spent on the literature review, results and highlights of which can be read in sections below.
+The initial phase of the thesis involved getting familiar with concept of \acrshort{mbt}, analyzing previously done or currently ongoing researches and case studies related to \acrshort{mbt} and choosing the right tool which conformed with our requirements through literature review. Within this phase 16 research papers, 1 master's thesis and 1 patent description were read completely, analyzed and documented, not to mention tool descriptions as well as other papers which were discarded after reading the abstract. It also included time during which multiple \acrshort{mbt} tools were configured and tried out for choosing one for applying it for \acrshort{bsc}. Overall results and highlights can be read in sections below.
 
 \section{Modeling Paradigms}
 
 \par
-As the extensive research has been done for already couple of decades related to usage of modeling in software development, this resulted in multiple modeling paradigms available today. According to survey on \acrshort{mbt} approaches done in 2007 \cite{Survey} reader can observe list of most popular modeling notations in the table \ref{tab:Usage_Survey}. 
+As the extensive research has been done for already couple of decades related to usage of modeling in software development, this resulted in multiple modeling paradigms available today. According to a survey on \acrshort{mbt} approaches done in 2007 \cite{Survey} reader can observe list of most popular modeling notations in the Table \ref{tab:Usage_Survey}. \todop{Need to rephrase these two lines,  especially the second one. If you use the 'according' word, then you must say what the survey says in the second part of the sentence. Here you are saying what the reader can observe.}
 
 \begin{table}[]
     \centering
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|l|r|}
         \hline
-        Modeling Notations & Usage Amounts \\
+        \textbf{Modeling Notations} & \textbf{Usage Amounts} \\
         \hline
         Statechart Diagram & 27 \\
         \hline
@@ -50,7 +50,7 @@ Flowchart \cite{Flowchart} is extremely useful for modeling workflow or process.
 
 \subsection{State-based Notations}
 \par
-Internal state of the system is modeled as a set of variables which are edited by operations. Usually, each operation contains pre and post condition which verifies updates the state.\cite{Pretschner_Taxonomy} State-based modeling is supported by multiple notations such as Z, Spec\#, \acrshort{ocl} and others. Applying state-based modeling paradigm requires knowledge of at least one of these modeling notations, which makes it more difficult to apply it within company, without significant changes such as teaching responsible for modeling people one of these notation or employing new people who are already proficient with it. 
+Internal state of the system is modeled as a set of variables which are edited by operations. Usually, each operation contains pre and post condition which verifies updates the state\cite{Pretschner_Taxonomy}. State-based modeling is supported by multiple notations such as Z, Spec\#, \acrshort{ocl} and others. Applying state-based modeling paradigm requires knowledge of at least one of these modeling notations, which makes it more difficult to apply it within company, without significant changes such as teaching responsible for modeling people one of these notation or employing new people who are already proficient with it. 
 
 \subsection{Transition-based Notations}
 \par
@@ -150,7 +150,7 @@ A couple of case-studies were encountered relating to the Graphwalker during the
 
 \subsection{USE}
 \par
-USE (\acrshort{uml}-based Specification Environment) \cite{USE_definition} is a tool based on \acrshort{uml} modeling language enhanced with \acrshort{ocl} constraints. Its purpose is to assist analysts, designers and developers in executing \acrshort{uml} models and checking \acrshort{ocl} constraints. System models, invariants,  pre an post conditions can be specified in a textual form. Models are defined in a .use file and generation of its instances is orchestrated by .assl file. The file with .ins extension contains extra optional invariants. Generation of snapshots is done by user through editing .assl file. Figure \ref{Fig:USE_test_generation} shows structure of .assl file.
+USE (\acrshort{uml}-based Specification Environment) \cite{USE_definition} is a tool based on \acrshort{uml} modeling language enhanced with \acrshort{ocl} constraints. Its purpose is to assist analysts, designers and developers in executing the \acrshort{uml} models and checking the \acrshort{ocl} constraints. The system models, invariants,  pre and post conditions can be specified in a textual form. The models are defined in a .use file and generation of its instances is orchestrated by .assl file. The files with .ins extensions contain extra optional invariants. Generation of snapshots is done by the user through editing the .assl file. Figure \ref{Fig:USE_test_generation} shows the structure of a .assl file.
 
 \begin{figure} [htbp!]
 	\centering
@@ -159,11 +159,11 @@ USE (\acrshort{uml}-based Specification Environment) \cite{USE_definition} is a 
 \end{figure}
 
 \par
-One usage of USE tools can be observed in \cite{USE_Alloy_Z_comparison} where it is compared to other tools such as Alloy Analyzer, ProZ and Zlive in order to detect abilities and weaknesses of tools for different modelling languages. For this purpose, they conducted simple experiment with Course Assignment System, which was written in 3 different modeling languages, \acrshort{uml} enahnced with \acrshort{ocl}, Alloy and Z. Then they used above mentioned tools respectively and compared the results.
+One usage of the USE tools can be observed in \cite{USE_Alloy_Z_comparison} where it is compared to the other tools such as Alloy Analyzer, ProZ and Zlive in order to detect abilities and weaknesses of the tools used in different modelling languages. For this purpose, they conducted a simple experiment with a Course Assignment System, which was written in 3 different modeling languages, \acrshort{uml} enhanced with \acrshort{ocl}, Alloy and Z. Then they used these different tools and compared their results with each other.
 
 \subsection{Agile Requirements Designer from CA Technologies}
 \par
-Agile Requirements Designer if a \acrshort{mbt} commercial tool developed by CA Technologies\cite{Agile_Requirement_Designer_desciption}. Models are represented in form of flowcharts. It can be used for off-line as well as on-line execution. The example model could be observed in the figure \ref{Fig:AgileRequirementDesigner_Charts}. It supports multiple coverage criteria such coverage of all paths, all edges, all nodes and pairwise edge coverage.
+Agile Requirements Designer is a \acrshort{mbt} tool commercially developed by CA Technologies\cite{Agile_Requirement_Designer_desciption}. Models are represented in the form of flowcharts. It can be used for off-line as well as on-line execution. The example model could be observed in the figure \ref{Fig:AgileRequirementDesigner_Charts}. This model supports multiple coverage criteria such as coverage of all paths, all edges, all nodes and pairwise edge coverage.
 
 \begin{figure} [htbp!]
 	\centering
@@ -172,15 +172,15 @@ Agile Requirements Designer if a \acrshort{mbt} commercial tool developed by CA 
 \end{figure}
 
 \par
-CA Technologies provides more tools for testing such as CA Test Data Manager which, together with Agile Requirement Designer broadens the opportunities for providing high coverage during software testing. Agile Requirement Designer has integration interfaces to popular issue tracker software such as Microsoft TFS, Atlassian Jira and others. These interfaces give opportunity to directly add or alter generated test cases from models to an issue tracker software used by company. Agile Requirement Designer also provides interfaces for connection to popular test execution automation engines, such as Ranorex and others.
+CA Technologies provide more tools for testing such as the CA Test Data Manager which, together with Agile Requirement Designer broadens the opportunities for providing high coverage during software testing. Agile Requirement Designer has integration interfaces to the popular issue tracker softwares such as Microsoft TFS, Atlassian Jira and others. These interfaces create opportunities to directly add or alter the generated test cases from models to an issue tracker software used by the companies. Agile Requirement Designer also provides interfaces for the popular test execution automation engines, such as Ranorex and others.
 
 \par
-To sum up, Agile Requirement Designer gives opportunity to integrate \acrshort{mbt} into the company with less changes required for current testing process. It would be our first choice, but unfortunately, we did not get answer to our request for using it in scope of this thesis.
+To sum up, Agile Requirement Designer gives the opportunity to integrate \acrshort{mbt} into a company with less changes required for the current testing process. It would have been our first choice of selection, but unfortunately, we couldn't avail an answer to the request for using it in this thesis.
 
 \section{Justification of Decision}
 
 \par
-Basically, all tools reviewed in previous section were suitable for applying off-line \acrshort{mbt} for \acrshort{bsc} except MobiGUITAR which supports only android platform. So, Prioritization of the rest of the tools were based on the requirements given from company that the chosen tool should be usable among all quality engineers in company. USE required adoption of \acrshort{uml} as well as language for writing generation criteria in .assl file, because of this it got the lowest priority. NModel and Spec Explorer required knowledge of programming languages and programming concepts which reduced their priority in our list as well. Among remaining two tools, CA Agile Requirement Designer had higher priority due to its connection interfaces to many other already used technologies in Brainloop, which was making it easier to integrate \acrshort{mbt} into the current testing process, but unfortunately we were not responded for the request of using it during our thesis. As a result, choice was made in advantage of Graphwalker. Table \ref{tab:Prioritized_Tools} summarizes the prioritization of underlying tools.
+Basically, all the tools reviewed in the previous section were suitable for applying off-line \acrshort{mbt} for \acrshort{bsc} except the MobiGUITAR which supports only android platform. So, Prioritization of the rest of the tools were based on the requirements given from Brainloop that the chosen tool should be usable among all the quality engineers within the company. USE required adoption of \acrshort{uml} as well as the language for writing the generation criteria in .assl file, due to which this got the lowest priority. NModel and Spec Explorer required the knowledge of programming languages and programming concepts which reduced their priority in our list as well. Amongst the remaining two tools, CA Agile Requirement Designer had higher priority due to its connection interfaces to many other already used technologies at Brainloop, which was making it easier to integrate \acrshort{mbt} into the current testing process, but unfortunately we were not able to acquire the permissions to our request of using it in our thesis. As a result, the choice was made in advantage of the other tool with the next highest priority called the Graphwalker. Table \ref{tab:Prioritized_Tools} summarizes the prioritization of underlying tools.
 
 \begin{table}[]
     \centering

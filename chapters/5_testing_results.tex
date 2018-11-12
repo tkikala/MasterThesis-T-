@@ -1,20 +1,88 @@
 \chapter{TEST EXECUTION AND RESULTS}
 \label{chapter:testing_results}
 
+Tests were executed only on one device, iPhone 6s owned by Brainloop. Test execution took roughly 39 hours and detected 38 issues overall. Unfortunately, we cannot mention description and severity of the issues in thesis, as it is confidential information of Brainloop. Complete test report will be handed over to Brainloop as one artifact of this thesis. More detailed information about execution can be observed in following section.
 
 
 \section{Results and Spent Effort for each model tested with MRP}
+Table \ref{tab:Test_Results} points out how total 4196 items were distributed per model, how much time was spent on executing and how many issues were detected by tests generated from each model.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|l|p{2cm}|p{2cm}|p{2cm}|}
+        \hline
+        \textbf{Models Tested with \acrshort{mrp}} & \textbf{Parsed Test Sequence Length in Items} & \textbf{Time Spent on Execution in Hours} & \textbf{Number of Detected Issues}\\
+        \hline
+        \textit{Base and Navigation layers} & 822 & 3 & 2 \\
+        \hline
+        Datarooms & 152 & 2 & 3 \\
+        \hline
+        Dataroom Context Menu & 83 & 1 & 1 \\
+        \hline
+        Documents & 67 & 0.25 & 0 \\
+        \hline
+        Recently Changed & 67 & 1.5 & 4 \\
+        \hline
+        Recently Viewed & 95 & 1 & 1 \\
+        \hline
+        Events & 215 & 2 & 2 \\
+        \hline
+        All Version View & 28 & 0.5 & 2 \\
+        \hline
+        File Context Menu - Downloaded & 86 & 1 & 0 \\
+        \hline
+        File Context Menu - Not Downloaded & 101 & 1 & 0 \\
+        \hline
+        File Context Menu - Downloaded PDF & 87 & 1 & 0 \\
+        \hline
+        Share Review & 157 & 2 & 3 \\
+        \hline
+        Send Securely & 218 & 2 & 2 \\
+        \hline
+        Original File Viewer & 37 & 0.5 & 0 \\
+        \hline
+        PDF Viewer Operations & 792 & 4 & 7 \\
+        \hline
+        PDF Viewer Annotations & 252 & 3 & 3 \\
+        \hline
+        Settings & 58 & 0.75 & 0 \\
+        \hline
+        Access Code Settings & 30 & 0.5 & 0 \\
+        \hline
+        Application View Settings & 67 & 0.75 & 0 \\
+        \hline
+        Delete Settings & 32 & 0.5 & 0 \\
+        \hline
+        Download Settings & 50 & 1 & 1 \\
+        \hline
+        Security Settings & 132 & 2.5 & 0 \\
+        \hline
+        Change Account Password & 62 & 1.5 & 1 \\
+        \hline
+        Servers and Datarooms Settings & 107 & 2.5 & 0 \\
+        \hline
+        Add Dataroom Server & 30 & 0.75 & 0 \\
+        \hline
+        Remove Dataroom Server & 72 & 0.75 & 0 \\
+        \hline
+        Support & 64 & 0.5 & 3 \\
+        \hline
+        Votes & 230 & 2 & 1 \\
+        \hline
+        \textbf{Total} & \textbf{4196} & \textbf{39} & \textbf{38}\\
+        \hline
+    \end{tabular}
+    \caption{Test Execution Results }
+    \label{tab:Test_Results}
+\end{table}
 
 \section{Comparison to results from current testing process}
 
+\par
+After comparing our list of issues with already reported bugs in issue tracker software, we found out that 30 of 38 bugs were not reported there, while 8 of them were already reported. The reason behind it can be explained with the deep exploration of the modeled functionality using Graphwalker. Basically, whatever is modeled gets tested very extensively.
 
+\par
+On the other hand, we did not detect many bugs which were already reported during the current testing process. This also can be explained with couple of reasons. First of all, part of the functionality was omitted while modeling, mentioned in 3rd section. Another reasons is that, models created during the thesis might not cover the functionality completely, as \acrshort{bdrs} provides thousands of different combinations of configurations and application might react to it differently. Last, but not least, generated tests against \acrshort{bsc} were executed only on one device while on different devices application might behave differently.
 
-
-
-\begin{lstlisting}
-http://localhost:4200/camera
-http://localhost:4200/camera/<id>
-http://localhost:4200/instruction
-http://localhost:4200/instruction/<id>
-\end{lstlisting}
-
+\par
+To sum up, these are the result of first drafts of our models. After describing the concept of modeling to the quality assurance team already involved in testing of \acrshort{bsc}, with their contribution and brainstorming, models will be extended to test far more combinations of application and will get enhanced with more parameters, as they are people who know all hidden behind configuration of \acrshort{bdrs} which affect \acrshort{bsc}. I would refer again to Apfenbaum's comment \cite{Apfenbaum_MBT}, this information is gold!
