@@ -3,7 +3,7 @@
 
 \section{Off-line Test Generation with Graphwalker}
 \par
-User needs to have Java version 7 or 8 installed on the machine for test generation with Graphwalker. The off-line generation is supported via command line interface, where user needs to pass models and generation criteria as parameters to Graphwalker .jar file. User can generate tests from single as well as from multiple models simultaneously. The example usage is listed below.
+The user needs to have Java version 7 or 8 installed on the machine for test generation with Graphwalker. The off-line generation is supported via the command line interface, where the user needs to pass models and generation criteria as parameters to the Graphwalker \texttt{.jar} file. The user can generate tests from single as well as from multiple models simultaneously. The example usage is listed below.
 
 \begin{lstlisting}
 For single model:
@@ -19,7 +19,7 @@ java -jar graphwalker.jar offline
 \end{lstlisting}
 
 \par
-Generated tests are given in form of sequence of edges and vertexes and can be observed in the listing below.
+Graphwalker outputs the generated tests in form of a sequence of edges and vertexes. An example sequence can be observed in the listing below.
 
 \begin{lstlisting}
 e_Init
@@ -34,19 +34,19 @@ e_Logout
 \end{lstlisting}
 
 \par
-Graphwalkers allows off-line test generation for from models with multiple selection criteria.  The general pattern for test selection criteria can be observed in figure \ref{Fig:raphwalker_testselection_example}.
+Graphwalker allows off-line test generation from models using multiple selection criteria. The general pattern for the test selection criteria can be observed in Figure \ref{Fig:raphwalker_testselection_example}.
 
 \begin{figure} [htbp!]
-	\centering
+\centering
 					\includegraphics[width=1\textwidth]{figures/Graphwalker_testselection_example.png}
 					\caption{\label{Fig:raphwalker_testselection_example} Graphwalker Test Selection pattern}
 \end{figure}
 \par
-As reader can observe, selection criterion consists of generator, stop condition type and condition. Generator stands for the coverage algorithm which takes stop condition type as a parameter. Stop condition type gives Graphwalker information about what exactly to cover using the coverage algorithm. Condition might vary depending on stop condition type.
+As the reader can observe, a selection criterion consists of a generator, a stop condition type and a condition. Generator stands for the coverage algorithm, which takes the stop condition type as a parameter. The stop condition type gives Graphwalker information about what exactly to cover using the coverage algorithm. The condition might vary depending on the stop condition type.
 
 \subsection{Generator Algorithms}
 \par
-One of the generator algorithms in Graphwalker is random. This is the algorithm which will be used most extensively for test generation in this thesis. It is also known with name Drunkard's walk or Random walk. This algorithm selects edges not blocked by guards coming out of vertex completely randomly during traversal and continues doing same until stop condition is met. As a parameter it can take multiple stop conditions such as edge or vertex coverage. Examples of its usage can be observed below. 
+One of the generator algorithms in Graphwalker is called \texttt{random}, also known under the name Drunkard's walk or Random walk. This is the algorithm which will be used most extensively for the generation of tests in this thesis. This algorithm selects edges which are not blocked by guards, choosing one of them randomly and traversing it in order to reach the next vertex. This process is repeated until the stopping condition is met. Multiple stop conditions such as edge or vertex coverage can be used as parameters. Examples of the usage of this algorithm can be observed below. 
 \begin{lstlisting}
 random(vertex_coverage(100))
 random(never)
@@ -56,14 +56,13 @@ random((reached_vertex(v_SomeVertex) and vertex_coverage(100)) || time_duration(
 \end{lstlisting}
 
 \par
-Weighted\_random coverage does exactly same as random algorithm, but takes into consideration weight annotations on edge labels and decides on next edge based on these weights. Basically, higher the edge weight, more likely it is that Graphwalker will take that edge when its source vertex is reached. It is extremely useful when company has usage profiles of application from customers, so they can test more extensively features which are used more often. Example usage of it would be also same as in case of random, but instead of random keyword we use weighted\_random.
+The \texttt{weighted\_random} coverage works in the same way as the random algorithm, additionally it takes the weight annotations on edge labels into consideration and chooses the next edge based on them. Basically, the higher the edges weight, the more likely it is that Graphwalker will traverse that edge when its source vertex is reached. This is extremely useful when the company receives usage profiles for an application from customers, in order to test features with a higher usage more extensively. \texttt{weighted\_random} can be called in the same way as random, with the only change being the substitution of the algorithms name.
 
 \par
-Quick-random tries to cover model with the shortest path. It marks already taken edges 
-as visited and tries not to take them any more if there is other option available. Problem is that it does not work with \acrshort{efsm} and might take an edge which is blocked by guard. That is the reason why it cannot be used in our case as most of edges in our models are annotated with guards. Example usage would look exactly same as random but with the keyword quick\_random.
+\texttt{quick-random} tries to cover a model using the shortest path possible. It marks already taken edges as visited and tries not to traverse them again if another option is available. The problem is that it does not work with \acrshort{efsm} and might take an edge which is blocked by a guard. That is the reason why it cannot be used in our case, as most of the edges in our models are annotated with guards. As in the case of \texttt{weighted\_random} the algorithm can be called using the same syntax which is used for the random algorithm, by exchanging the functions name.  
 
 \par
-A\_Star algorithm can be used for generating shortest path to an edge or vertex in model. In this case passed stop condition needs to specify which edge or vertex needs to be reached. The example usage can be found below.
+The \texttt{a\_Star} algorithm can be used to generate the shortest path to an edge or vertex in the model. In this case the passed stop condition needs to specify which edge or vertex needs to be reached, in order for the algorithm to terminate. The example usage can be found below.
 
 \begin{lstlisting}
 a_star(reached_edge(e_SomeEdge))
@@ -72,17 +71,17 @@ a_star(reached_vertex(v_SomeVertex))
 
 \subsection{Stop Conditions}
 \par
-Edge and vertex coverage are the most used stop conditions for any type of random algorithm in Graphwalker. They take as a parameter integer which stands for percentage. So, random(edge\_coverage(95)) would mean that Graphwalker can stop only after it covers 95\% of the edges.
+Edge and vertex coverage are the most used stop conditions for any type of random algorithm in Graphwalker. As an input parameter they take an integer which stands for the percentage that has to be covered. So, \texttt{random(edge\_coverage(95))} would mean that Graphwalker can stop only after it covers 95\% of the edges.
 
 \par
-Reached vertex or edge stop condition tells Graphwalker to stop generation when specific edge or vertex which was passed to it as an argument is reached while traversal. For example, a\_star(reached\_vertex(v\_SomeVertex)) would mean that traversal should stop when vertex with name v\_SomeVertex is reached.
+The reached vertex or edge stop condition tells Graphwalker to stop the generation when a specific edge or vertex, passed to it as an argument, is reached while traversing the graph. For example, \texttt{a\_star(reached\_vertex(v\_SomeVertex))} would mean that traversal should stop when vertex with name \texttt{v\_SomeVertex} is reached.
 
 \par
-Other stop conditions are also provided, such as never stopping the traversal, length of generated sequence, time duration for how long traversal should continue, dependency and requirement coverage, but none of them will be used in scope of this thesis.
+Other stop conditions are also available, such as \texttt{never} stopping the traversal, the \texttt{length} of the generated sequence, the \texttt{duration} of the traversal, dependency and requirement coverage, but none of them will be used in the scope of this thesis.
 
 \section{Graphwalker GUI}
 \par
-To simplify test generation even more, instead of command line parameters, we decided to provide \acrshort{gui} for off-line test generation, which you can observe in figure \ref{Fig:Graphwalker_GUi}.
+To simplify the test generation even more, we decided to provide a \acrshort{gui} for off-line test generation, which is shown in Figure \ref{Fig:Graphwalker_GUi}.
 
 \begin{figure} [htbp!]
 	\centering
@@ -91,14 +90,14 @@ To simplify test generation even more, instead of command line parameters, we de
 \end{figure}
 
 \par
-Program is based on Windows Forms. User needs to browse the folder where all models reside together with graphwalker .jar file. Then he/she needs to select interesting for him/her models and type coverage criterion. Unfortunately, for now it is only possible to generate command with one coverage criterion for all models, but user is allowed to alter the command inside the Command To Execute text box. After result is executed, it contains duplicated states when Graphwalker wants to switch for same state from one model to another, so parsing of whole document takes place as soon as raw output is generated. As a result, Graphwalker generates parsed and well shaped results. It is worth mentioning that, after optimizing the solution, multiple million lines sequence of states and transitions are getting parsed in roughly 10 seconds which is very good result.
+The \acrshort{gui} is based on Windows Forms. The user needs to browse the folder where all the models and the graphwalker \texttt{.jar} file reside. Then they need to select the models to be included in the generation, as well as the coverage criterion. Unfortunately, for now it is only possible to generate commands which use one coverage criterion for all models, but the user has the possibility to alter the command inside the \textit{Command To Execute} text box, which makes it possible to add other criteria manually. After the resulting command is executed, it might contain duplicated states which are the result of Graphwalker switching from one model to another, which can happen when it reaches a shared state. The parsing of the whole document takes place as soon as raw output is generated, to remove these repeated references of a single state. As a result, Graphwalker generates parsed and well shaped results. It is worth mentioning that, after optimizing the solution, a sequence of states containing multiple millions of lines of states and transitions is getting parsed in roughly 10 seconds.
 
 \section{Minimal Required Path}
 \par
-After generating tests with 100\% of random edge coverage of all 33 behavioral models together and parsing the results, it resulted in sequence of 380127 states and transitions. The rough estimation of the time required to execute test suite against \acrshort{aut} was 3533 hours. This is not feasible for company at all, as one testrun requires 10 complete sprints and that also in case if the automated tests will be executed on \acrshort{aut} for 24 hours a day. This required changing the way of test generation and compromising some test scenarios to reduce the test sequence. For this reason we came up with the notion of \acrlong{mrp} (\acrshort{mrp}).
+The generation of tests for all the 33 behavioral models, with 100\% random edge coverage and the parsing of the results, resulted in a sequence of 380,127 states and transitions. The roughly estimated time that was required to execute the test suite against \acrshort{aut} was 3,533 hours. This is not feasible for a company, as one test run would require 10 complete sprints (each taking 2 weeks) even if the automated tests were to be executed for 24 hours a day. This required changing the way tests where generated and compromising some test scenarios to reduce the size of the test sequence. For this reason we came up with the notion of \acrlong{mrp} (\acrshort{mrp}).
 
 \par
-Model's \acrshort{mrp} stands for the shortest path needed for reaching it from the base layer. It has form of Graphwalker test generation criterion composed with multiple models and a\_star algorithm. Each model's description in second layer contains the \acrshort{mrp} and one example for Security Settings model's \acrshort{mrp} can be observed below.
+\acrshort{mrp} stands for the shortest path needed to reach some state in a model from the base layer. It has the form of a Graphwalker test generation criterion composed of multiple models and the \texttt{a\_star} algorithm. Each model's description in the second layer contains the \acrshort{mrp}. An example for the Security Settings model's \acrshort{mrp} can be observed below.
 
 \begin{lstlisting}
 MRP: -m DefineSimpleAccessCode.graphml 
@@ -111,5 +110,5 @@ a_star(reached_vertex(v_InitialDataroomSelectionView))
 -m NavigationThroughTabs.graphml a_star(reached_vertex(v_SettingsView))
 \end{lstlisting}
 
-After \acrshort{mrp} is given to Graphwalker as a parameter, user can add current model with any coverage criterion. We decided to test \acrshort{bsc}'s base and navigation layers together with 100\% coverage of all models in it and each model from operations layer with 100\% coverage together with their \acrshort{mrp}. Test results will be described in next chapter.
+After the \acrshort{mrp} is given to Graphwalker as a parameter, the user can add the current model with any coverage criterion. We decided to test \acrshort{bsc}'s base and navigation layers together with 100\% coverage of all the models contained in them and each model from the operations layer with 100\% coverage together with their \acrshort{mrp}. The test results are described in the next chapter.
 
