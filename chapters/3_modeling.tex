@@ -35,14 +35,18 @@ There are multiple keywords supported by the Graphwalker such as, Start, SHARED,
 \section{Modeling of Brainloop Secure Client}
 
 \par
-Modeling of the \acrshort{bsc} behaviour included  most of its functionality created as separate models interconnected with shared steps. Some of the functional parts such as remote synchronization, boardbooks, offline usage, locking of the application, locking of the device and other environmental constraints were omitted during the modeling process, due to the time and complexity constraints. Some of the key models are described in the following subsections.
+Modeling of the \acrshort{bsc} behaviour included  most of its functionality created as separate models interconnected with shared steps. Some of the functional parts such as remote synchronization, boardbooks, offline usage, locking of the application, locking of the device and other environmental constraints were omitted during the modeling process, due to the time and complexity constraints.
+
+\par
+Model by its definition should be abstracted representation of the system's behaviour.
+Case-study from Silva et. al. \cite{Silva_SpecExplorer} showed that if model is concretized till atomic actions of user such as clicking button and typing text, modeling requires huge effort which results in 40\% of lines of code of system implementation. But, according to Pretschner et. al. \cite{Pretschner_MBTInPractice} defining adequate level of abstraction continues to be an art. So there is no premade recipe for that. In our models, we abstracted the transitions to the level where one transition contains complete set of actions needed to bring application to last expected result in test case. More detailed representation of abstracted transitions and states can be observed in attached figures in subsequent subsections.
 
 \subsection{Modeling of Authentication}
 \par
 The authentication functionality of the \acrshort{bsc} consists of 2 steps. Defining the access code for accessing the application and the authentication against \acrshort{bdrs}. The access codes can be defined either as simple or as complex. The difference between the two is that simple one can only contain numeric characters while the complex access code can consist of alphanumeric characters and symbols. The defined access code is required to be entered for confirming the identity every time the application is run and also to unlock from the automatic lock feature of the application, which occurs due the application idle time defined in the settings.
 
 \par
-Four different models were created for the authentication feature of the \acrshort{bsc}. Define simple access code with 7 states and 10 transitions, define complex access code with 5 states and 7 transitions, enter access code with 8 states and 11 transitions and initial authentication against \acrshort{bdrs} with 6 states and 9 transitions. One of them can be observed in figure \ref{Fig:Authentication_Model_Screenshot}.
+Four different models were created for the authentication feature of the \acrshort{bsc}, which are Define Simple Access Code (with 7 states and 10 transitions), Define Complex Access Code (with 5 states and 7 transitions), Enter Access Code (with 8 states and 11 transitions) and Initial Authentication Against \acrshort{bdrs} (with 6 states and 9 transitions). The Define Simple Access Code model can be observed in the figure \ref{Fig:Authentication_Model_Screenshot}.
 
 \begin{figure} [htbp!]
 	\centering
@@ -166,7 +170,7 @@ Created models are structured in layered manner. Accessing the specific function
 					\caption{\label{Fig:Layers} Layered Structure of Models}
 \end{figure}
 
-\section{Sum Up}
+\section{Modeling Overview}
 \par
 Overall, 33 models were created, with total 312 states and 566 transitions describing behavior of \acrshort{bsc}. More detailed representation of states and transitions can be observed in table \ref{tab:Behavioral_models}.
 

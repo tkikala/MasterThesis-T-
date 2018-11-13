@@ -1,6 +1,27 @@
 \chapter{LIMITATIONS AND FUTURE WORK}
 \label{chapter:limitations_and_future_work}
 
+\par
+In this section, we will examine the limitations of our study. Consequently, the future scope of work that can be done for improvement of \acrshort{mbt} of \acrshort{bsc}, has been discussed.
+
 \section{Limitations}
 
+\par
+We would like to point out two main topics where we bumped into the limitations in this thesis. 
+
+\par
+Graphwalker's coverage criteria was mostly limited to random. It would have been very helpful if it had supported New York Street Sweeper Algorithm generating shortest path through directed graph after traversal. There is high chance that if we had had this algorithm up and running, we would have been able to execute tests with complete coverage of all 33 models together, as the resulting sequence would reduce tremendously.
+
+\par
+Another limitation is related to off-line \acrshort{mbt} approach itself. While creating models and executing tests, we got the feeling that the feature of backward communication from execution to models would be very nice to have feature, as it does not limit us with already predefined variables and settings and can make our tests much more realistic and not bound to pre-configurations.
+
 \section{Future Work}
+
+\par
+As a future work, of course the first thing in consideration would be to integrate \acrshort{mbt} into the testing process in Brainloop. This would itself bring up new processes, timelines and experiences. Process will undergo optimization while getting used, because team needs to configure it in the most comfortable way for them.
+
+\par
+As Graphwalker is open-source tool,  we can also be considered as a part of its open-source community. Implementing New York Street Sweeper Algorithm for \acrshort{efsm}s would be huge contribution and biggest impression of gratitude we can provide to the community for using Graphwalker in our subsequent projects.
+
+\par
+Last but not least, after the complete set of transitions and state verifications is automated, first consideration should be moving from off-line to on-line \acrshort{mbt}. If Graphwalker is decided as a tool for \acrshort{mbt} in Brainloop, transition to on-line \acrshort{mbt} would require team to adopt usage of Java or Python programming language, but this can be considered as late future.

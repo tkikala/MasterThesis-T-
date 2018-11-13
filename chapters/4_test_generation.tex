@@ -81,8 +81,17 @@ Reached vertex or edge stop condition tells Graphwalker to stop generation when 
 Other stop conditions are also provided, such as never stopping the traversal, length of generated sequence, time duration for how long traversal should continue, dependency and requirement coverage, but none of them will be used in scope of this thesis.
 
 \section{Graphwalker GUI}
+\par
+To simplify test generation even more, instead of command line parameters, we decided to provide \acrshort{gui} for off-line test generation, which you can observe in figure \ref{Fig:Graphwalker_GUi}.
 
-\todo{need to go to work, make screenshots and write briefly about this}
+\begin{figure} [htbp!]
+	\centering
+					\includegraphics[width=0.95\textwidth]{figures/Graphwalker_GUI_screenshot}
+					\caption{\label{Fig:Graphwalker_GUi} Graphwalker Off-line Test Generator}
+\end{figure}
+
+\par
+Program is based on Windows Forms. User needs to browse the folder where all models reside together with graphwalker .jar file. Then he/she needs to select interesting for him/her models and type coverage criterion. Unfortunately, for now it is only possible to generate command with one coverage criterion for all models, but user is allowed to alter the command inside the Command To Execute text box. After result is executed, it contains duplicated states when Graphwalker wants to switch for same state from one model to another, so parsing of whole document takes place as soon as raw output is generated. As a result, Graphwalker generates parsed and well shaped results. It is worth mentioning that, after optimizing the solution, multiple million lines sequence of states and transitions are getting parsed in roughly 10 seconds which is very good result.
 
 \section{Minimal Required Path}
 \par
